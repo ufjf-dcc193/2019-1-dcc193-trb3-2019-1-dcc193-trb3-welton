@@ -18,7 +18,6 @@ public class Etiqueta {
     private String descricaoTextual;
     private String url;
 
-
     public Etiqueta() {
     }
 
@@ -81,17 +80,10 @@ public class Etiqueta {
         return this;
     }
 
-
-
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", titulo='" + getTitulo() + "'" +
-            ", descricaoTextual='" + getDescricaoTextual() + "'" +
-            ", url='" + getUrl() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", descricaoTextual='"
+                + getDescricaoTextual() + "'" + ", url='" + getUrl() + "'" + "}";
     }
-
 
 }

@@ -19,20 +19,17 @@ public class Item {
     private Long id;
     private String titulo;
     @OneToMany
-    private List<Anotacao> listaAnotacao;
-    @OneToMany
     private List<Etiqueta> listaEtiqueta;
     @OneToMany
     private List<Vinculo> listaVinculo;
 
+
     public Item() {
     }
 
-    public Item(Long id, String titulo, List<Anotacao> listaAnotacao, List<Etiqueta> listaEtiqueta,
-            List<Vinculo> listaVinculo) {
+    public Item(Long id, String titulo, List<Etiqueta> listaEtiqueta, List<Vinculo> listaVinculo) {
         this.id = id;
         this.titulo = titulo;
-        this.listaAnotacao = listaAnotacao;
         this.listaEtiqueta = listaEtiqueta;
         this.listaVinculo = listaVinculo;
     }
@@ -51,14 +48,6 @@ public class Item {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public List<Anotacao> getListaAnotacao() {
-        return this.listaAnotacao;
-    }
-
-    public void setListaAnotacao(List<Anotacao> listaAnotacao) {
-        this.listaAnotacao = listaAnotacao;
     }
 
     public List<Etiqueta> getListaEtiqueta() {
@@ -87,11 +76,6 @@ public class Item {
         return this;
     }
 
-    public Item listaAnotacao(List<Anotacao> listaAnotacao) {
-        this.listaAnotacao = listaAnotacao;
-        return this;
-    }
-
     public Item listaEtiqueta(List<Etiqueta> listaEtiqueta) {
         this.listaEtiqueta = listaEtiqueta;
         return this;
@@ -102,11 +86,16 @@ public class Item {
         return this;
     }
 
+
+
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", listaAnotacao='"
-                + getListaAnotacao() + "'" + ", listaEtiqueta='" + getListaEtiqueta() + "'" + ", listaVinculo='"
-                + getListaVinculo() + "'" + "}";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", titulo='" + getTitulo() + "'" +
+            ", listaEtiqueta='" + getListaEtiqueta() + "'" +
+            ", listaVinculo='" + getListaVinculo() + "'" +
+            "}";
     }
 
 }

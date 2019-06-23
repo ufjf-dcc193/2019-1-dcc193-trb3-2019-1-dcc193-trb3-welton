@@ -30,10 +30,14 @@ public class Anotacao {
     @ManyToOne
     private Usuario usuario;
 
+    @ManyToOne
+    private Item item;
+
+
     public Anotacao() {
     }
 
-    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao, Usuario usuario) {
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao, Usuario usuario, Item item) {
         this.id = id;
         this.titulo = titulo;
         this.descricaoTextual = descricaoTextual;
@@ -41,6 +45,7 @@ public class Anotacao {
         this.dtInclusao = dtInclusao;
         this.dtAlteracao = dtAlteracao;
         this.usuario = usuario;
+        this.item = item;
     }
 
     public Long getId() {
@@ -99,6 +104,14 @@ public class Anotacao {
         this.usuario = usuario;
     }
 
+    public Item getItem() {
+        return this.item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
     public Anotacao id(Long id) {
         this.id = id;
         return this;
@@ -134,6 +147,11 @@ public class Anotacao {
         return this;
     }
 
+    public Anotacao item(Item item) {
+        this.item = item;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -144,9 +162,8 @@ public class Anotacao {
             ", dtInclusao='" + getDtInclusao() + "'" +
             ", dtAlteracao='" + getDtAlteracao() + "'" +
             ", usuario='" + getUsuario() + "'" +
+            ", item='" + getItem() + "'" +
             "}";
     }
-
-
     
 }
