@@ -1,5 +1,7 @@
 package br.com.dcc193t3.controller.user;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +30,6 @@ public class AnotacaoController {
         model.addAttribute("listaAnotacao",anotacaoRepository.findAllByUsuario(usuariologado));
         return "USER/anotacao/home-anotacao";
     }
-
-    @RequestMapping("/criar")
-    public String criarAnotacao(Model model){
-        model.addAttribute("anotacao",new Anotacao());
-        return "USER/anotacao/criar-anotacao";
-    }
     @RequestMapping("/deletar/{id}")
     public String deletarAnotacao(@PathVariable Long id){
         anotacaoRepository.deleteById(id);
@@ -48,6 +44,7 @@ public class AnotacaoController {
 
     @RequestMapping("/editar/salvar")
     public String editarsalvarAnotacao(Anotacao anotacao){
+        anotacao.setDtAlteracao(new Date());
         anotacaoRepository.save(anotacao);
         return "redirect:/admin/anotacao/";
     }

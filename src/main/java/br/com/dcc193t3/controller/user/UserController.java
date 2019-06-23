@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.dcc193t3.dao.AnotacaoRepository;
 import br.com.dcc193t3.dao.EtiquetaRepository;
 import br.com.dcc193t3.dao.ItemRepository;
+import br.com.dcc193t3.model.Anotacao;
 import br.com.dcc193t3.model.Item;
 import br.com.dcc193t3.model.Usuario;
 
@@ -42,7 +43,9 @@ public class UserController {
     public String exibiritem(@PathVariable Long id,Model model){
         Item item = itemRepository.getOne(id);
         model.addAttribute("item", item);
-        model.addAttribute("listaAnotacao", anotacaoRepository.findAllByItem(item));
+        model.addAttribute("anotacao", new Anotacao());
+        model.addAttribute("listaAnotacao", anotacaoRepository.findAllByItemOrderByDtInclusao(item));
+        System.out.println(anotacaoRepository.findAllByItemOrderByDtInclusao(item).size());
         return "USER/item";
     }
 }

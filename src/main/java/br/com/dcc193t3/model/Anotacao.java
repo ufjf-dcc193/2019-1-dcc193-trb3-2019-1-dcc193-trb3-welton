@@ -33,11 +33,14 @@ public class Anotacao {
     @ManyToOne
     private Item item;
 
+    @ManyToOne
+    private Vinculo vinculo;
+
     public Anotacao() {
     }
 
-    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao,
-            Usuario usuario, Item item) {
+    
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao, Usuario usuario, Item item, Vinculo vinculo) {
         this.id = id;
         this.titulo = titulo;
         this.descricaoTextual = descricaoTextual;
@@ -46,8 +49,8 @@ public class Anotacao {
         this.dtAlteracao = dtAlteracao;
         this.usuario = usuario;
         this.item = item;
+        this.vinculo = vinculo;
     }
-
     public String getdtInclusaoStr() {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         return formato.format(getDtInclusao());
@@ -122,6 +125,14 @@ public class Anotacao {
         this.item = item;
     }
 
+    public Vinculo getVinculo() {
+        return this.vinculo;
+    }
+
+    public void setVinculo(Vinculo vinculo) {
+        this.vinculo = vinculo;
+    }
+
     public Anotacao id(Long id) {
         this.id = id;
         return this;
@@ -162,12 +173,37 @@ public class Anotacao {
         return this;
     }
 
+    public Anotacao vinculo(Vinculo vinculo) {
+        this.vinculo = vinculo;
+        return this;
+    }
+
+
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", descricaoTextual='"
-                + getDescricaoTextual() + "'" + ", url='" + getUrl() + "'" + ", dtInclusao='" + getDtInclusao() + "'"
-                + ", dtAlteracao='" + getDtAlteracao() + "'" + ", usuario='" + getUsuario() + "'" + ", item='"
-                + getItem() + "'" + "}";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", titulo='" + getTitulo() + "'" +
+            ", descricaoTextual='" + getDescricaoTextual() + "'" +
+            ", url='" + getUrl() + "'" +
+            ", dtInclusao='" + getDtInclusao() + "'" +
+            ", dtAlteracao='" + getDtAlteracao() + "'" +
+            ", usuario='" + getUsuario() + "'" +
+            ", item='" + getItem() + "'" +
+            ", vinculo='" + getVinculo() + "'" +
+            "}";
+    }
+
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao,
+            Usuario usuario, Item item) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descricaoTextual = descricaoTextual;
+        this.url = url;
+        this.dtInclusao = dtInclusao;
+        this.dtAlteracao = dtAlteracao;
+        this.usuario = usuario;
+        this.item = item;
     }
 
 }

@@ -1,5 +1,7 @@
 package br.com.dcc193t3.controller.admin;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,12 +31,6 @@ public class AnotacaoAdminController {
         model.addAttribute("listaAnotacao",anotacaoRepository.findAll());
         return "ADMIN/anotacao/home-anotacao";
     }
-
-    @RequestMapping("/criar")
-    public String criarAnotacao(Model model){
-        model.addAttribute("anotacao",new Anotacao());
-        return "ADMIN/anotacao/criar-anotacao";
-    }
     @RequestMapping("/deletar/{id}")
     public String deletarAdminAnotacao(@PathVariable Long id){
         anotacaoRepository.deleteById(id);
@@ -49,6 +45,7 @@ public class AnotacaoAdminController {
 
     @RequestMapping("/editar/salvar")
     public String editarsalvarAdminAnotacao(Anotacao anotacao){
+        anotacao.setDtAlteracao(new Date());
         anotacaoRepository.save(anotacao);
         return "redirect:/admin/anotacao/";
     }
