@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -22,21 +23,21 @@ public class Vinculo {
     private Item itemOrigem;
     @ManyToOne
     private Item itemDestino;
-    @OneToMany
-    private List<Etiqueta> listaEtiqueta;
-    @OneToMany
-    private List<Anotacao> listaAnotacao;
+    @ManyToMany
+    private List<Etiqueta> etiqueta;
+    @ManyToMany
+    private List<Anotacao> anotacao;
+
 
     public Vinculo() {
     }
 
-    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> listaEtiqueta,
-            List<Anotacao> listaAnotacao) {
+    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> etiqueta, List<Anotacao> anotacao) {
         this.id = id;
         this.itemOrigem = itemOrigem;
         this.itemDestino = itemDestino;
-        this.listaEtiqueta = listaEtiqueta;
-        this.listaAnotacao = listaAnotacao;
+        this.etiqueta = etiqueta;
+        this.anotacao = anotacao;
     }
 
     public Long getId() {
@@ -63,20 +64,20 @@ public class Vinculo {
         this.itemDestino = itemDestino;
     }
 
-    public List<Etiqueta> getListaEtiqueta() {
-        return this.listaEtiqueta;
+    public List<Etiqueta> getEtiqueta() {
+        return this.etiqueta;
     }
 
-    public void setListaEtiqueta(List<Etiqueta> listaEtiqueta) {
-        this.listaEtiqueta = listaEtiqueta;
+    public void setEtiqueta(List<Etiqueta> etiqueta) {
+        this.etiqueta = etiqueta;
     }
 
-    public List<Anotacao> getListaAnotacao() {
-        return this.listaAnotacao;
+    public List<Anotacao> getAnotacao() {
+        return this.anotacao;
     }
 
-    public void setListaAnotacao(List<Anotacao> listaAnotacao) {
-        this.listaAnotacao = listaAnotacao;
+    public void setAnotacao(List<Anotacao> anotacao) {
+        this.anotacao = anotacao;
     }
 
     public Vinculo id(Long id) {
@@ -94,21 +95,25 @@ public class Vinculo {
         return this;
     }
 
-    public Vinculo listaEtiqueta(List<Etiqueta> listaEtiqueta) {
-        this.listaEtiqueta = listaEtiqueta;
+    public Vinculo etiqueta(List<Etiqueta> etiqueta) {
+        this.etiqueta = etiqueta;
         return this;
     }
 
-    public Vinculo listaAnotacao(List<Anotacao> listaAnotacao) {
-        this.listaAnotacao = listaAnotacao;
+    public Vinculo anotacao(List<Anotacao> anotacao) {
+        this.anotacao = anotacao;
         return this;
     }
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", itemOrigem='" + getItemOrigem() + "'" + ", itemDestino='"
-                + getItemDestino() + "'" + ", listaEtiqueta='" + getListaEtiqueta() + "'" + ", listaAnotacao='"
-                + getListaAnotacao() + "'" + "}";
+        return "{" +
+            " id='" + getId() + "'" +
+            ", itemOrigem='" + getItemOrigem() + "'" +
+            ", itemDestino='" + getItemDestino() + "'" +
+            ", etiqueta='" + getEtiqueta() + "'" +
+            ", anotacao='" + getAnotacao() + "'" +
+            "}";
     }
 
 }

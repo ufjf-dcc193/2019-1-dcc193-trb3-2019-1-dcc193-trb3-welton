@@ -1,5 +1,6 @@
 package br.com.dcc193t3.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -45,6 +46,16 @@ public class Anotacao {
         this.dtAlteracao = dtAlteracao;
         this.usuario = usuario;
         this.item = item;
+    }
+
+    public String getdtInclusaoStr() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(getDtInclusao());
+    }
+
+    public String getdtAlteracaoStr() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(getDtAlteracao());
     }
 
     public Long getId() {

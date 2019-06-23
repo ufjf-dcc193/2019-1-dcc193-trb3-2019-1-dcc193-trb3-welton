@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-12">
                 <a class="btn btn-primary" th:href="@{./criar}" role="button">
-                    <ion-icon name="add"></ion-icon> Criar Item
+                    <ion-icon name="add"></ion-icon> Criar Anotação
                 </a>
             </div>
             <div class="col-12">
@@ -28,28 +28,30 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col"></th>
-                            <th scope="col">Titulo</th>
-                            <th scope="col">Etiqueta</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Descrição</th>
+                            <th scope="col">URL</th>
+                            <th scope="col">Data inclusao</th>
+                            <th scope="col">Data alteracao</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="listaItem: ${listaItem}">
+                        <tr th:each="listaAnotacao: ${listaAnotacao}">
                             <td>
 
-                                <a class="btn btn-outline-warning" th:href="@{'./editar/' + ${listaItem.id}}"
+                                <a class="btn btn-outline-warning" th:href="@{'./editar/' + ${listaAnotacao.id}}"
                                     role="button">Editar</a>
                             </td>
                             <td>
 
-                                <a class="btn btn-outline-danger" th:href="@{'./deletar/' + ${listaItem.id}}"
+                                <a class="btn btn-outline-danger" th:href="@{'./deletar/' + ${listaAnotacao.id}}"
                                     role="button">Deletar</a>
                             </td>
-                            <td th:text=${listaItem.titulo}></td>
-                            <td>
-                                    <div th:each="listaEtiqueta: ${listaItem.etiqueta}">
-                                        <span th:text="${listaEtiqueta.titulo}"></span>
-                                    </div>
-                            </td>
+                            <td th:text=${listaAnotacao.titulo}></td>
+                            <td th:text=${listaAnotacao.descricaoTextual}></td>
+                            <td th:text=${listaAnotacao.url}></td>
+                            <td th:text=${listaAnotacao.getdtInclusaoStr()}></td>
+                            <td th:text=${listaAnotacao.getdtAlteracaoStr()}></td>
                         </tr>
                     </tbody>
                 </table>
