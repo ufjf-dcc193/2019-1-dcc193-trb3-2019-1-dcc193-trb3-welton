@@ -15,27 +15,27 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3> Nome do usuario logado: <span th:text="${usuario.nome}"></span></h3>
-                <a class="btn btn-primary" th:href="@{./usuario/}" role="button">Usuario</a>
-                <a class="btn btn-primary" th:href="@{./item/}" role="button">Item</a>
-                <a class="btn btn-primary" th:href="@{./etiqueta/}" role="button">Etiqueta</a>
-                <a class="btn btn-primary" th:href="@{./vinculo/}" role="button">Vinculo</a>
-                <a class="btn btn-primary" th:href="@{./anotacao/}" role="button">Anotacao</a>
+                <a class="btn btn-primary" th:href="@{/user}" role="button">home</a>
+            </div>
+            <div class="col-12 row ">
+                <div class="col-6">
+                    <label>Titulo: <span th:text="${item.titulo}"></span></label>
+                </div>
+                <div class="col-6">
+                    <label>Etiqueta:</label>
+                    <div th:each="listaEtiqueta: ${item.etiqueta}">
+                        <span th:text="${listaEtiqueta.titulo}"></span>
+                    </div>
+                </div>
             </div>
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12 mt-2">
-                        <form th:action="@{./buscarItem}" th:object="${item}" method="POST">
-                            <div class="form-group">
-                                <label> <input type="text" class="form-control" th:field="*{titulo}" aria-describedby="titulo"/></label>
-                                <input type="submit" class="btn btn-primary" value="Buscar"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-12">
-                        <div th:each="listaItens: ${listaItem}" class="mt-2">
-                            <a class="btn btn-primary w-100" th:href="@{'./exibiritem/'+ ${listaItens.id}} " role="button"><span th:text="${listaItens.titulo}"></span></a>
-                        </div>
+                    <div th:each="listaAnotacao: ${listaAnotacao}" class=" col-12 mt-2">
+                        <label>Titulo: <span th:text="${listaAnotacao.titulo}"></span></label>     
+                        <label>Descrição: <span th:text="${listaAnotacao.descricaoTextual}"></span></label>     
+                        <label>url: <span th:text="${listaAnotacao.url}"></span></label>
+                        <label>Data Inclusão: <span th:text="${listaAnotacao.getdtInclusaoStr()}"></span></label>   
+                        <label>Data Edição: <span th:text="${listaAnotacao.getdtAlteracaoStr()}"></span></label>        
                     </div>
                 </div>
             </div>

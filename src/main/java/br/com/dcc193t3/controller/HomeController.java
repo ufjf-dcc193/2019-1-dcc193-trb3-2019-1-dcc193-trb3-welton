@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.dcc193t3.dao.ItemRepository;
 import br.com.dcc193t3.dao.UsuarioRepository;
+import br.com.dcc193t3.model.Item;
 import br.com.dcc193t3.model.Usuario;
 
 /**
@@ -18,6 +20,9 @@ public class HomeController {
 
     @Autowired
     UsuarioRepository usuarioRepository;
+
+    @Autowired
+    ItemRepository itemRepository;
 
     @RequestMapping({"","/","home"})
     public String home(Model model){
@@ -34,16 +39,28 @@ public class HomeController {
         return "redirect:/admin/";
     }
 
-    @RequestMapping("efetuarLogin")
+    @RequestMapping("/efetuarLogin")
     public String login(Usuario usario,Model model, HttpSession session){
         Usuario usuarioQuery = usuarioRepository.findFirstByEmailAndCodigoAcesso(usario.getEmail(),usario.getCodigoAcesso());
+        System.out.println(usario.toString());
         if(usuarioQuery != null){
             session.setAttribute("usuarioLogado", usuarioQuery);
-            model.addAttribute("avaliador", usuarioQuery);
-            return "USER/home";
+            return "redirect:/user/";
         }else{
             return "Home/login";
         }
+    }
+    @RequestMapping("/user/")
+    public String user(HttpSession session, Model model){
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+        model.addAttribute("usuario", usuarioLogado);
+        model.addAttribute("listaItem", itemRepository.findAll());
+        model.addAttribute("item", new Item());
+        return "USER/home";
+    }
+    @RequestMapping("/user")
+    public String userAux(){
+        return "redirect:/user/";
     }
 
     @RequestMapping("cadastro")

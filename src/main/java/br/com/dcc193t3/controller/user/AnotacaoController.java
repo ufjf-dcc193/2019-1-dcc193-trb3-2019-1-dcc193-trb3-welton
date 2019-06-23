@@ -1,4 +1,6 @@
-package br.com.dcc193t3.controller.admin;
+package br.com.dcc193t3.controller.user;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,56 +9,53 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.dcc193t3.dao.AnotacaoRepository;
-import br.com.dcc193t3.dao.UsuarioRepository;
 import br.com.dcc193t3.model.Anotacao;
 import br.com.dcc193t3.model.Usuario;
 
 /**
- * AnotacaoAdminController
+ * AnotacaoController
  */
 @Controller
-@RequestMapping("admin/anotacao")
-public class AnotacaoAdminController {
+@RequestMapping("user/anotacao")
+public class AnotacaoController {
 
     @Autowired
     AnotacaoRepository anotacaoRepository;
 
-    @Autowired
-    UsuarioRepository usuarioRepository;
-
     @RequestMapping("/")
-    public String homeAdminAnotacao(Model model){
-        model.addAttribute("listaAnotacao",anotacaoRepository.findAll());
-        return "ADMIN/anotacao/home-anotacao";
+    public String homeAnotacao(Model model,HttpSession session){
+        Usuario usuariologado = (Usuario) session.getAttribute("usuarioLogado");
+        model.addAttribute("listaAnotacao",anotacaoRepository.findAllByUsuario(usuariologado));
+        return "USER/anotacao/home-anotacao";
     }
 
     @RequestMapping("/criar")
     public String criarAnotacao(Model model){
         model.addAttribute("anotacao",new Anotacao());
-        return "ADMIN/anotacao/criar-anotacao";
+        return "USER/anotacao/criar-anotacao";
     }
     @RequestMapping("/deletar/{id}")
-    public String deletarAdminAnotacao(@PathVariable Long id){
+    public String deletarAnotacao(@PathVariable Long id){
         anotacaoRepository.deleteById(id);
         return "redirect:/admin/anotacao/";
     }
 
     @RequestMapping("/editar/{id}")
-    public String editarAdminAnotacao(@PathVariable Long id, Model model){
+    public String editarAnotacao(@PathVariable Long id, Model model){
         model.addAttribute("anotacao",anotacaoRepository.findById(id).get());
-        return "ADMIN/anotacao/editar-anotacao";
+        return "USER/anotacao/editar-anotacao";
     }
 
     @RequestMapping("/editar/salvar")
-    public String editarsalvarAdminAnotacao(Anotacao anotacao){
+    public String editarsalvarAnotacao(Anotacao anotacao){
         anotacaoRepository.save(anotacao);
         return "redirect:/admin/anotacao/";
     }
 
     @RequestMapping("/salvar")
-    public String salvarTrabalho(Anotacao anotacao){
-        Usuario usuarioAdmin = usuarioRepository.getOne(4L);
-        anotacao.setUsuario(usuarioAdmin);
+    public String salvarTrabalho(Anotacao anotacao,HttpSession session){
+        Usuario usuariologado = (Usuario) session.getAttribute("usuarioLogado");
+        anotacao.setUsuario(usuariologado);
         anotacaoRepository.save(anotacao);
         return "redirect:/admin/anotacao/";
     }

@@ -43,10 +43,11 @@ public class DemoApplication {
 	@Bean
 	InitializingBean sendDatabase() {
 		return () -> {
-			usuarioRepository.save(new Usuario(null, "aaa", "aaa", "aaa", "aaaa@hotmail.com"));
+			usuarioRepository.save(new Usuario(null, "aaa", "aaa", "aaa", "aaa"));
 			usuarioRepository.save(new Usuario(null, "Joao", "senha123", "usuario noob", "suarionoob@hotmail.com"));
 			usuarioRepository.save(new Usuario(null, "pedro", "aaaa", "nem sei quem é", "pedro_file@gmail.com"));
-
+			usuarioRepository.save(new Usuario(null, "admin", "admin", "admin", "admin"));
+ 
 			etiquetaRepository.save(new Etiqueta(null, "livro", "conjunto de folhas", "www.livro.com.br"));
 			etiquetaRepository.save(new Etiqueta(null, "e-book", "livro digital", "www.e-book.com.br"));
 			etiquetaRepository.save(new Etiqueta(null, "revista", "noticias", "www.revista.com.br"));
