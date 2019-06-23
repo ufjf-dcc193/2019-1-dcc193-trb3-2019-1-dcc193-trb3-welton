@@ -16,7 +16,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Anotacao {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String descricaoTextual;

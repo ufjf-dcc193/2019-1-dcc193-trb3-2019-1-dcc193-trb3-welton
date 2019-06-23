@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
@@ -15,22 +16,19 @@ import javax.persistence.OneToMany;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
-    @OneToMany
-    private List<Etiqueta> listaEtiqueta;
-    @OneToMany
-    private List<Vinculo> listaVinculo;
+    @ManyToMany
+    private List<Etiqueta> etiqueta;
 
     public Item() {
     }
 
-    public Item(Long id, String titulo, List<Etiqueta> listaEtiqueta, List<Vinculo> listaVinculo) {
+    public Item(Long id, String titulo, List<Etiqueta> etiqueta) {
         this.id = id;
         this.titulo = titulo;
-        this.listaEtiqueta = listaEtiqueta;
-        this.listaVinculo = listaVinculo;
+        this.etiqueta = etiqueta;
     }
 
     public Long getId() {
@@ -49,20 +47,12 @@ public class Item {
         this.titulo = titulo;
     }
 
-    public List<Etiqueta> getListaEtiqueta() {
-        return this.listaEtiqueta;
+    public List<Etiqueta> getEtiqueta() {
+        return this.etiqueta;
     }
 
-    public void setListaEtiqueta(List<Etiqueta> listaEtiqueta) {
-        this.listaEtiqueta = listaEtiqueta;
-    }
-
-    public List<Vinculo> getListaVinculo() {
-        return this.listaVinculo;
-    }
-
-    public void setListaVinculo(List<Vinculo> listaVinculo) {
-        this.listaVinculo = listaVinculo;
+    public void setEtiqueta(List<Etiqueta> etiqueta) {
+        this.etiqueta = etiqueta;
     }
 
     public Item id(Long id) {
@@ -75,20 +65,15 @@ public class Item {
         return this;
     }
 
-    public Item listaEtiqueta(List<Etiqueta> listaEtiqueta) {
-        this.listaEtiqueta = listaEtiqueta;
-        return this;
-    }
-
-    public Item listaVinculo(List<Vinculo> listaVinculo) {
-        this.listaVinculo = listaVinculo;
+    public Item etiqueta(List<Etiqueta> etiqueta) {
+        this.etiqueta = etiqueta;
         return this;
     }
 
     @Override
     public String toString() {
-        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", listaEtiqueta='"
-                + getListaEtiqueta() + "'" + ", listaVinculo='" + getListaVinculo() + "'" + "}";
+        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", etiqueta='" + getEtiqueta() + "'"
+                + "}";
     }
 
 }

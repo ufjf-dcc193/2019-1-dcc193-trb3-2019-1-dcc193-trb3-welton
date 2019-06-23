@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 public class Vinculo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
     private Item itemOrigem;
