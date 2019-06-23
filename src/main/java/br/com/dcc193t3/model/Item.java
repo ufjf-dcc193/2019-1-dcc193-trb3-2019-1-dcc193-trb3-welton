@@ -23,7 +23,6 @@ public class Item {
     @OneToMany
     private List<Vinculo> listaVinculo;
 
-
     public Item() {
     }
 
@@ -86,16 +85,10 @@ public class Item {
         return this;
     }
 
-
-
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", titulo='" + getTitulo() + "'" +
-            ", listaEtiqueta='" + getListaEtiqueta() + "'" +
-            ", listaVinculo='" + getListaVinculo() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", listaEtiqueta='"
+                + getListaEtiqueta() + "'" + ", listaVinculo='" + getListaVinculo() + "'" + "}";
     }
 
 }

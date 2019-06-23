@@ -27,11 +27,11 @@ public class Vinculo {
     @OneToMany
     private List<Anotacao> listaAnotacao;
 
-
     public Vinculo() {
     }
 
-    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> listaEtiqueta, List<Anotacao> listaAnotacao) {
+    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> listaEtiqueta,
+            List<Anotacao> listaAnotacao) {
         this.id = id;
         this.itemOrigem = itemOrigem;
         this.itemDestino = itemDestino;
@@ -106,14 +106,9 @@ public class Vinculo {
 
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", itemOrigem='" + getItemOrigem() + "'" +
-            ", itemDestino='" + getItemDestino() + "'" +
-            ", listaEtiqueta='" + getListaEtiqueta() + "'" +
-            ", listaAnotacao='" + getListaAnotacao() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", itemOrigem='" + getItemOrigem() + "'" + ", itemDestino='"
+                + getItemDestino() + "'" + ", listaEtiqueta='" + getListaEtiqueta() + "'" + ", listaAnotacao='"
+                + getListaAnotacao() + "'" + "}";
     }
-
 
 }

@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -22,9 +21,9 @@ public class Anotacao {
     private String titulo;
     private String descricaoTextual;
     private String url;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dtInclusao;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dtAlteracao;
 
     @ManyToOne
@@ -33,11 +32,11 @@ public class Anotacao {
     @ManyToOne
     private Item item;
 
-
     public Anotacao() {
     }
 
-    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao, Usuario usuario, Item item) {
+    public Anotacao(Long id, String titulo, String descricaoTextual, String url, Date dtInclusao, Date dtAlteracao,
+            Usuario usuario, Item item) {
         this.id = id;
         this.titulo = titulo;
         this.descricaoTextual = descricaoTextual;
@@ -154,16 +153,10 @@ public class Anotacao {
 
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", titulo='" + getTitulo() + "'" +
-            ", descricaoTextual='" + getDescricaoTextual() + "'" +
-            ", url='" + getUrl() + "'" +
-            ", dtInclusao='" + getDtInclusao() + "'" +
-            ", dtAlteracao='" + getDtAlteracao() + "'" +
-            ", usuario='" + getUsuario() + "'" +
-            ", item='" + getItem() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", descricaoTextual='"
+                + getDescricaoTextual() + "'" + ", url='" + getUrl() + "'" + ", dtInclusao='" + getDtInclusao() + "'"
+                + ", dtAlteracao='" + getDtAlteracao() + "'" + ", usuario='" + getUsuario() + "'" + ", item='"
+                + getItem() + "'" + "}";
     }
-    
+
 }

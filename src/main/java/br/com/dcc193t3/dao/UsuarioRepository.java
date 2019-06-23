@@ -11,5 +11,6 @@ import br.com.dcc193t3.model.Usuario;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
 
-    
+    Usuario findFirstByEmailAndCodigoAcesso(String email, String codigoAcesso);
+
 }

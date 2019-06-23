@@ -19,7 +19,6 @@ public class Usuario {
     private String descricaoTextual;
     private String email;
 
-
     public Usuario() {
     }
 
@@ -98,15 +97,8 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", nome='" + getNome() + "'" +
-            ", codigoAcesso='" + getCodigoAcesso() + "'" +
-            ", descricaoTextual='" + getDescricaoTextual() + "'" +
-            ", email='" + getEmail() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", nome='" + getNome() + "'" + ", codigoAcesso='" + getCodigoAcesso()
+                + "'" + ", descricaoTextual='" + getDescricaoTextual() + "'" + ", email='" + getEmail() + "'" + "}";
     }
 
-    
-    
 }
