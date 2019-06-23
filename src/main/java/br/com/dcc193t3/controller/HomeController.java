@@ -25,9 +25,13 @@ public class HomeController {
         return "Home/login";
     }
 
-    @RequestMapping("admin")
+    @RequestMapping("/admin/")
     public String admin(){
         return "ADMIN/home";
+    }
+    @RequestMapping("/admin")
+    public String adminaux(){
+        return "redirect:/admin/";
     }
 
     @RequestMapping("efetuarLogin")
