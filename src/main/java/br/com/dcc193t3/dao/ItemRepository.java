@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import br.com.dcc193t3.model.Etiqueta;
 import br.com.dcc193t3.model.Item;
 
 /**
@@ -14,8 +15,7 @@ import br.com.dcc193t3.model.Item;
 @Repository
 public interface ItemRepository extends JpaRepository<Item,Long>{
 
-    @Query("SELECT item from Item item"
-	+ " where item.titulo like CONCAT('%', ?1, '%')")
-	List<Item> findAllByText(String titulo);
+	List<Item> findAllDistinctByTituloContainingAndEtiquetaIn(String titulo, List<Etiqueta> etiqueta);
+
 
 }

@@ -36,7 +36,7 @@ public class UsuarioController {
     @RequestMapping("/deletar/{id}")
     public String deletarUsuario(@PathVariable Long id){
         usuarioRepository.deleteById(id);
-        return "redirect:/admin/usuario/";
+        return "redirect:/user/usuario/";
     }
 
     @RequestMapping("/editar/{id}")
@@ -48,12 +48,12 @@ public class UsuarioController {
     @RequestMapping("/editar/salvar")
     public String editarsalvarUsuario(Usuario usuario){
         usuarioRepository.save(usuario);
-        return "redirect:/admin/usuario/";
+        return "redirect:/user/usuario/";
     }
 
     @RequestMapping("/salvar")
     public String salvarTrabalho(Usuario usuario){
         usuarioRepository.save(usuario);
-        return "redirect:/admin/usuario/";
+        return "redirect:/user/usuario/";
     }
 }

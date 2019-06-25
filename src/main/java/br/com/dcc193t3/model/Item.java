@@ -1,5 +1,6 @@
 package br.com.dcc193t3.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 /**
  * Item
@@ -23,6 +23,7 @@ public class Item {
     private List<Etiqueta> etiqueta;
 
     public Item() {
+        etiqueta = new ArrayList<>();
     }
 
     public Item(Long id, String titulo, List<Etiqueta> etiqueta) {

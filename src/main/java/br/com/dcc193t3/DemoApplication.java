@@ -110,13 +110,7 @@ public class DemoApplication {
 			etiquetaRepository.findById(1L).get(),
 			etiquetaRepository.findById(2L).get(),
 			etiquetaRepository.findById(3L).get())
-			), 
-			Collections.unmodifiableList(Arrays.asList(
-			anotacaoRepository.findById(1L).get(),
-			anotacaoRepository.findById(2L).get(),
-			anotacaoRepository.findById(3L).get())
-			)
-			));
+			)));
 
 
 		};

@@ -31,7 +31,6 @@
                             <th scope="col">Item origem</th>
                             <th scope="col">Item destino</th>
                             <th scope="col">Etiquetas</th>
-                            <th scope="col">Lista de Anotações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,11 +49,6 @@
                             <td th:text=${listaVinculo.itemDestino.titulo}></td>
                             <td>
                                     <div th:each="listaEtiqueta: ${listaVinculo.etiqueta}">
-                                        <span th:text="${listaEtiqueta.titulo}"></span>
-                                    </div>
-                            </td>
-                            <td>
-                                    <div th:each="listaEtiqueta: ${listaVinculo.anotacao}">
                                         <span th:text="${listaEtiqueta.titulo}"></span>
                                     </div>
                             </td>

@@ -33,7 +33,7 @@ public class EitquetaController {
     @RequestMapping("/deletar/{id}")
     public String deletarEtiqueta(@PathVariable Long id){
         etiquetaRepository.deleteById(id);
-        return "redirect:/admin/etiqueta/";
+        return "redirect:/user/etiqueta/";
     }
 
     @RequestMapping("/editar/{id}")
@@ -45,12 +45,12 @@ public class EitquetaController {
     @RequestMapping("/editar/salvar")
     public String editarsalvarEtiqueta(Etiqueta etiqueta){
         etiquetaRepository.save(etiqueta);
-        return "redirect:/admin/etiqueta/";
+        return "redirect:/user/etiqueta/";
     }
 
     @RequestMapping("/salvar")
     public String salvarTrabalho(Etiqueta etiqueta){
         etiquetaRepository.save(etiqueta);
-        return "redirect:/admin/etiqueta/";
+        return "redirect:/user/etiqueta/";
     }
 }

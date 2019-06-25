@@ -33,7 +33,7 @@ public class AnotacaoController {
     @RequestMapping("/deletar/{id}")
     public String deletarAnotacao(@PathVariable Long id){
         anotacaoRepository.deleteById(id);
-        return "redirect:/admin/anotacao/";
+        return "redirect:/user/anotacao/";
     }
 
     @RequestMapping("/editar/{id}")
@@ -43,10 +43,12 @@ public class AnotacaoController {
     }
 
     @RequestMapping("/editar/salvar")
-    public String editarsalvarAnotacao(Anotacao anotacao){
+    public String editarsalvarAnotacao(Anotacao anotacao,HttpSession session){
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+        anotacao.setUsuario(usuarioLogado);
         anotacao.setDtAlteracao(new Date());
         anotacaoRepository.save(anotacao);
-        return "redirect:/admin/anotacao/";
+        return "redirect:/user/anotacao/";
     }
 
     @RequestMapping("/salvar")
@@ -54,7 +56,7 @@ public class AnotacaoController {
         Usuario usuariologado = (Usuario) session.getAttribute("usuarioLogado");
         anotacao.setUsuario(usuariologado);
         anotacaoRepository.save(anotacao);
-        return "redirect:/admin/anotacao/";
+        return "redirect:/user/anotacao/";
     }
     
 }

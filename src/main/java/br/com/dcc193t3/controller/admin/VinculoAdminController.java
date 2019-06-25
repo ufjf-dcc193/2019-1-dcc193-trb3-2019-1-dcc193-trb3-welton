@@ -43,7 +43,6 @@ public class VinculoAdminController {
         model.addAttribute("vinculo",new Vinculo());
         model.addAttribute("listaOrigem",itemRepository.findAll());
         model.addAttribute("listaDestino",itemRepository.findAll());
-        model.addAttribute("listaAnotacao",anotacaoRepository.findAll());
         model.addAttribute("listaEtiqueta",etiquetaRepository.findAll());
         return "ADMIN/vinculo/criar-vinculo";
     }
@@ -57,7 +56,6 @@ public class VinculoAdminController {
     public String editarAdminVinculo(@PathVariable Long id, Model model){
         model.addAttribute("listaOrigem",itemRepository.findAll());
         model.addAttribute("listaDestino",itemRepository.findAll());
-        model.addAttribute("listaAnotacao",anotacaoRepository.findAll());
         model.addAttribute("listaEtiqueta",etiquetaRepository.findAll());
         model.addAttribute("vinculo",vinculoRepository.findById(id).get());
         return "ADMIN/vinculo/editar-vinculo";

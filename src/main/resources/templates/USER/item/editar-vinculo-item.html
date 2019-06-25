@@ -13,12 +13,12 @@
 
 <body>
     <div class="col-12">
-        <a class="btn btn-primary" th:href="@{/admin}" role="button">home</a>
+        <a class="btn btn-primary" th:href="@{/user}" role="button">home</a>
     </div>
     <div class="container">
-        <form th:action="@{./salvar}" th:object="${vinculo}" method="POST">
+        <form th:action="@{../editarVinculo/salvar}" th:object="${vinculo}" method="POST">
             <input type="text" th:field="*{id}" class="d-none" />
-            <div class="form-group form-check card">
+            <div class="form-group form-check card d-none">
                     <label for="formGroupExampleInput">Item origem:</label>
                     <div class="row card-body">
                         <div class="col-6" th:each="listaOrigem: ${listaOrigem}" th:object=${Item}>

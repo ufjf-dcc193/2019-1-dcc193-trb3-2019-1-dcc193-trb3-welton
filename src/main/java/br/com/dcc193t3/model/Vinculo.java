@@ -3,6 +3,7 @@ package br.com.dcc193t3.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,19 +26,15 @@ public class Vinculo {
     private Item itemDestino;
     @ManyToMany
     private List<Etiqueta> etiqueta;
-    @ManyToMany
-    private List<Anotacao> anotacao;
-
 
     public Vinculo() {
     }
 
-    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> etiqueta, List<Anotacao> anotacao) {
+    public Vinculo(Long id, Item itemOrigem, Item itemDestino, List<Etiqueta> etiqueta) {
         this.id = id;
         this.itemOrigem = itemOrigem;
         this.itemDestino = itemDestino;
         this.etiqueta = etiqueta;
-        this.anotacao = anotacao;
     }
 
     public Long getId() {
@@ -72,14 +69,6 @@ public class Vinculo {
         this.etiqueta = etiqueta;
     }
 
-    public List<Anotacao> getAnotacao() {
-        return this.anotacao;
-    }
-
-    public void setAnotacao(List<Anotacao> anotacao) {
-        this.anotacao = anotacao;
-    }
-
     public Vinculo id(Long id) {
         this.id = id;
         return this;
@@ -100,20 +89,10 @@ public class Vinculo {
         return this;
     }
 
-    public Vinculo anotacao(List<Anotacao> anotacao) {
-        this.anotacao = anotacao;
-        return this;
-    }
-
     @Override
     public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", itemOrigem='" + getItemOrigem() + "'" +
-            ", itemDestino='" + getItemDestino() + "'" +
-            ", etiqueta='" + getEtiqueta() + "'" +
-            ", anotacao='" + getAnotacao() + "'" +
-            "}";
+        return "{" + " id='" + getId() + "'" + ", itemOrigem='" + getItemOrigem() + "'" + ", itemDestino='"
+                + getItemDestino() + "'" + ", etiqueta='" + getEtiqueta() + "'" + "}";
     }
 
 }

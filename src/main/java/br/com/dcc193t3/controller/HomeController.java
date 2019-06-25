@@ -1,5 +1,7 @@
 package br.com.dcc193t3.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.dcc193t3.dao.EtiquetaRepository;
 import br.com.dcc193t3.dao.ItemRepository;
 import br.com.dcc193t3.dao.UsuarioRepository;
+import br.com.dcc193t3.model.Etiqueta;
 import br.com.dcc193t3.model.Item;
 import br.com.dcc193t3.model.Usuario;
 
@@ -23,6 +27,9 @@ public class HomeController {
 
     @Autowired
     ItemRepository itemRepository;
+
+    @Autowired
+    EtiquetaRepository etiquetaRepository;
 
     @RequestMapping({"","/","home"})
     public String home(Model model){
@@ -55,7 +62,11 @@ public class HomeController {
         Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
         model.addAttribute("usuario", usuarioLogado);
         model.addAttribute("listaItem", itemRepository.findAll());
-        model.addAttribute("item", new Item());
+        List<Etiqueta> lista = etiquetaRepository.findAll();
+        Item item = new Item();
+        item.setEtiqueta(lista);
+        model.addAttribute("item", item);
+        model.addAttribute("listaEtiqueta",lista);
         return "USER/home";
     }
     @RequestMapping("/user")

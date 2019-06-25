@@ -5,34 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home avaliador</title>
+    <title>Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
 </head>
 
 <body>
-    <div class="col-12">
-        <a class="btn btn-primary" th:href="@{/user}" role="button">home</a>
-    </div>
     <div class="container">
-        <form th:action="@{./salvar}" th:object="${usuario}" method="POST">
-            <div class="form-group">
-                <label>Nome: <input type="text" class="form-control" th:field="*{nome}" /></label>
+        <div class="row">
+                <div class="col-12">
+                        <a class="btn btn-primary" th:href="@{/user}" role="button">home</a>
+                    </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <div th:each="listaVinculo: ${listaVinculo}" class="mt-2">
+                            <a class="btn btn-primary w-100" th:href="@{'../exibirVinculo/'+ ${listaVinculo.id}} " role="button">
+                                Origem: <span th:text="${listaVinculo.itemOrigem.titulo}"></span> 
+                                Destino: <span th:text="${listaVinculo.itemDestino.titulo}"></span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label>Senha: <input type="text" class="form-control" th:field="*{codigoAcesso}" /></label>
-            </div>
-            <div class="form-group">
-                <label>Descrição textual: <input type="text" class="form-control"
-                        th:field="*{descricaoTextual}" /></label>
-            </div>
-            <div class="form-group">
-                <label>Email: <input type="text" class="form-control" th:field="*{email}" /></label>
-            </div>
-            <input type="submit" class="btn btn-primary" />
-            <input type="reset" class="btn btn-outline-primary" />
-        </form>
+        </div>
     </div>
 </body>
 

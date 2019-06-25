@@ -19,13 +19,10 @@
             </div>
             <div class="col-12 row ">
                 <div class="col-6">
-                    <label>Titulo: <span th:text="${item.titulo}"></span></label>
+                    <label>Item Origem: <span th:text="${vinculo.itemOrigem.titulo}"></span></label>
                 </div>
                 <div class="col-6">
-                    <label>Etiqueta:</label>
-                    <div th:each="listaEtiqueta: ${item.etiqueta}">
-                        <span th:text="${listaEtiqueta.titulo}"></span>
-                    </div>
+                    <label>Item Destino: <span th:text="${vinculo.itemDestino.titulo}"></span></label>
                 </div>
             </div>
             <div class="col-12">
@@ -40,7 +37,7 @@
                 </div>
             </div>
             <div class="col-12">
-                    <form th:action="@{'../salvarNovaAnotacaoItem/' + ${item.id}}" th:object="${anotacao}" method="POST">
+                    <form th:action="@{'../salvarNovaAnotacaoVinculo/' + ${vinculo.id}}" th:object="${anotacao}" method="POST">
                         <div class="form-group">
                             <label>Título: <input type="text" class="form-control" th:field="*{titulo}" /></label>
                         </div>

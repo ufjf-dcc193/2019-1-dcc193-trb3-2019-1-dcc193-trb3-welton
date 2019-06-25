@@ -28,12 +28,18 @@
                         <tr>
                             <th scope="col"></th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                             <th scope="col">Titulo</th>
                             <th scope="col">Etiqueta</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="listaItem: ${listaItem}">
+                            <td>
+
+                                <a class="btn btn-outline-primary" th:href="@{'./gerenciarVinculo/' + ${listaItem.id}}"
+                                    role="button">Gerenciar vinculos</a>
+                            </td>
                             <td>
 
                                 <a class="btn btn-outline-warning" th:href="@{'./editar/' + ${listaItem.id}}"
@@ -46,9 +52,9 @@
                             </td>
                             <td th:text=${listaItem.titulo}></td>
                             <td>
-                                    <div th:each="listaEtiqueta: ${listaItem.etiqueta}">
-                                        <span th:text="${listaEtiqueta.titulo}"></span>
-                                    </div>
+                                <div th:each="listaEtiqueta: ${listaItem.etiqueta}">
+                                    <span th:text="${listaEtiqueta.titulo}"></span>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
