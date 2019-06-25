@@ -13,8 +13,9 @@
 
 <body>
     <div class="container">
+        <form th:action="@{./salvarcadastro}" class="m-5 p-5" th:object="${usuario}">
+
         <h1>Cadastro</h1>
-        <form th:action="@{./salvarcadastro}" th:object="${usuario}">
             <div class="form-group">
                 <label>Nome</label>
                 <input type="text" class="form-control" placeholder="Nome" th:field="*{nome}">

@@ -14,40 +14,50 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <h3> Nome do usuario logado: <span th:text="${usuario.nome}"></span></h3>
-                <a class="btn btn-primary" th:href="@{./usuario/}" role="button">Usuario</a>
-                <a class="btn btn-primary" th:href="@{./item/}" role="button">Item</a>
-                <a class="btn btn-primary" th:href="@{./etiqueta/}" role="button">Etiqueta</a>
-                <a class="btn btn-primary" th:href="@{./vinculo/}" role="button">Vinculo</a>
-                <a class="btn btn-primary" th:href="@{./anotacao/}" role="button">Anotacao</a>
-                <a class="btn btn-primary" th:href="@{./vinculoBusca/}" role="button">Busca Vinculo</a>
+            <div class="col-12 row">
+                <div class="col-12">
+                    <h3> Nome do usuario logado: <span th:text="${usuario.nome}"></span></h3>
+                </div>
+                <div class="col-12 card">
+                    <div class=" card-body">
+                        <a class="btn btn-primary" th:href="@{./usuario/}" role="button">Usuario</a>
+                        <a class="btn btn-primary" th:href="@{./item/}" role="button">Item</a>
+                        <a class="btn btn-primary" th:href="@{./etiqueta/}" role="button">Etiqueta</a>
+                        <a class="btn btn-primary" th:href="@{./vinculo/}" role="button">Vinculo</a>
+                        <a class="btn btn-primary" th:href="@{./anotacao/}" role="button">Anotacao</a>
+                        <a class="btn btn-primary" th:href="@{./vinculoBusca/}" role="button">Busca Vinculo</a>
+                    </div>
+                </div>
             </div>
             <div class="col-12">
                 <div class="row">
                     <div class="col-12 mt-2">
-                        <form th:action="@{./buscarItem}" th:object="${item}" method="POST">
+                        <form th:action="@{./buscarItem}" class="card card-body" th:object="${item}" method="POST">
                             <div class="form-group">
-                                <label> <input type="text" class="form-control" th:field="*{titulo}" aria-describedby="titulo"/></label>
+                                <label> Busca Textual: <input type="text" class="form-control" th:field="*{titulo}"
+                                        aria-describedby="titulo" /></label>
                                 <div class="form-group form-check card">
-                                        <label for="formGroupExampleInput">Etiqueta:</label>
-                                        <div class="row card-body">
-                                            <div class="col-6" th:each="listaEtiqueta, stat: ${listaEtiqueta}" th:object=${Etiqueta}>
-                                                <input class="form-check-input " type="checkbox"
-                                                    th:attr="checked=${item.etiqueta.contains(listaEtiqueta) ? true :false} "
-                                                    th:value="${listaEtiqueta.id}" name="etiqueta">
-                                                <label class="form-check-label" for="defaultCheck1" th:text="${listaEtiqueta.titulo}">
-                                                </label>
-                                            </div>
+                                    <label>Etiqueta:</label>
+                                    <div class="row card-body">
+                                        <div class="col-3" th:each="listaEtiqueta, stat: ${listaEtiqueta}"
+                                            th:object=${Etiqueta}>
+                                            <input class="form-check-input " type="checkbox"
+                                                th:attr="checked=${item.etiqueta.contains(listaEtiqueta) ? true :false} "
+                                                th:value="${listaEtiqueta.id}" name="etiqueta">
+                                            <label class="form-check-label" for="defaultCheck1"
+                                                th:text="${listaEtiqueta.titulo}">
+                                            </label>
                                         </div>
                                     </div>
-                                <input type="submit" class="btn btn-primary" value="Buscar"/>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Buscar" />
                             </div>
                         </form>
                     </div>
                     <div class="col-12">
                         <div th:each="listaItens: ${listaItem}" class="mt-2">
-                            <a class="btn btn-primary w-100" th:href="@{'./exibiritem/'+ ${listaItens.id}} " role="button"><span th:text="${listaItens.titulo}"></span></a>
+                            <a class="btn btn-primary w-100" th:href="@{'./exibiritem/'+ ${listaItens.id}} "
+                                role="button"><span th:text="${listaItens.titulo}"></span></a>
                         </div>
                     </div>
                 </div>
